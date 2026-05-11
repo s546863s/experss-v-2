@@ -87,9 +87,14 @@ const users = [
 
 app.post('/users', (req, res) =>{
   console.log("Data in The Request:", req.body)
+
+  const newUser = req.body;
+  newUser.id = users.length + 1;
+  users.push(newUser);
   res.send({
     success: true,
-    massage:"post method is working"})
+    data: newUser,
+    massage:"User added Successfully"})
 })
 
 app.get("/", (req, res) =>{
